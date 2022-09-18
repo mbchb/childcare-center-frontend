@@ -1,0 +1,150 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Welcome!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-5">
+         <!-- <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+         <div class="text-center">
+            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+              <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg"></span>
+              <span class="btn-inner--text">Google</span>
+            </a>
+          </div>--> 
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Sign up</small>
+          </div>
+          <form
+      name="userInfoForm"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="userInfoForm.username"
+          placeholder="Username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="username.errors && f.submitted"
+        >
+          Username is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="userInfoForm.firstName"
+          required
+          #firstName="ngModel" placeholder="First Name"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="userInfoForm.lastName"
+          placeholder="Last Name"
+          required
+          #lastName="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="lastName.errors && f.submitted"
+        >
+        LastName is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" name="email"
+          [(ngModel)]="userInfoForm.email" placeholder="Email" required #email="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted" >
+        Email is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name="phoneNumber"
+          [(ngModel)]="userInfoForm.phoneNumber" placeholder="Phone Number" required #phoneNumber="ngModel"/>
+        <div class="alert alert-danger" role="alert" *ngIf="phoneNumber.errors && f.submitted" >
+        Phone Number is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" [(ngModel)]="userInfoForm.password"
+        required minlength="6" #password="ngModel" placeholder="Password" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="password.errors && f.submitted"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="description" [(ngModel)]="userInfoForm.description"
+        placeholder="Description" required #description="ngModel" ></textarea>
+     </div>
+     <div class="form-group">
+      <label>Role</label><br>
+      <div *ngFor="let role of roles">
+      <input value="role.id" (click)="selectRole(role)" [ngModelOptions]="{standalone: true}" name="radio" type="radio"> {{role.name}}    </div>
+     </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Create account
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && signupFailed"
+        >
+          Signup failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

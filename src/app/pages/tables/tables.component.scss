@@ -1,0 +1,24 @@
+::ng-deep .modal-backdrop {
+background-color: transparent !important;
+}
+
+::ng-deep ngb-modal-backdrop{
+    z-index: 1050 !important;
+}
+
+.table-responsive {
+    overflow-x: visible !important;
+}
+
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    background-color: white !important;
+    color: black;
+}
+
+ng-select div, .ng-select input, .ng-select span {
+    color: black !important;
+}
+
+.ng-select-container {
+line-height: 2.5 !important;
+}

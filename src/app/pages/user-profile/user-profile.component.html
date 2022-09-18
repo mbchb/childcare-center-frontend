@@ -1,0 +1,130 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 350px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12 col-md-10">
+        <h1 class="text-white">Hello {{user?.firstName}} {{user?.lastName}}</h1>
+        <p class="text-white mt-0 mb-5">This is your profile page.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/img/theme/pngwing.png" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="card-body pt-0 pt-md-9">
+
+          <div class="text-center">
+            <h3>
+              {{user?.firstName}} {{user?.lastName}}
+            </h3>
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>{{role}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+            <h6 class="col-lg-9 heading-small text-muted mb-4">User information</h6>
+            <a class="btn btn-info col-lg-3 mb-4" (click)="editUser(user)">Edit profile</a>
+            
+          </div>
+          <div *ngIf="isUserUpdated" class="alert alert-success alert-dismissible" data-auto-dismiss role="alert">
+            User information updated succesfully
+          </div>
+          <div *ngIf="userUpdatedError" class="alert alert-warning" role="alert" data-auto-dismiss>
+            {{errormessage}}
+          </div>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Username</label>
+                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" disabled [(ngModel)]="user.username" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email address</label>
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jhon@example.com" [(ngModel)]="user.email" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">First name</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Last name</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phone">Phone Number</label>
+                    <input id="input-phone" class="form-control form-control-alternative" placeholder="phone Number" [(ngModel)]="user.phoneNumber" type="number" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">Address</label>
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Address" [(ngModel)]="user.localisation" [ngModelOptions]="{standalone : true}" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">About me</h6>
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." [(ngModel)]="user.description" [ngModelOptions]="{standalone : true}" ></textarea>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
